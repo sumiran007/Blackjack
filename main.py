@@ -104,10 +104,10 @@ def main():
             print("You are out of money! Game over.")
             playing = False
         else:
-            play_again = input("Do you want to play another round? (y/n): ")
+            play_again = input("Do you want to play another round? type y or n for yes or nk: ")
             if play_again.lower() != 'y':
                 save = open("save.txt", "a")
-                name = input("Enter your name: ")
+                name = input("Enter your name that can be saved in the text file for the money you made ")
                 save.write(f"{name} {money}\n")
                 save.close()
                 playing = False
