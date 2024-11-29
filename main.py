@@ -33,10 +33,9 @@ def calculate_hand_value(hand):
     return value
 #get money will allow a bet
 def get_bet(money):
+    print("welcome to blackjack")
     while True:
-        print('welcome to blackjack")
-        print('thanks for the money')
-        bet = input("Enter your bet: ")
+        bet = input("Enter your bet below 50: ")
         if not bet.isdigit():
             print("Invalid input. Please enter a number.")
             continue
@@ -45,6 +44,7 @@ def get_bet(money):
             print("You don't have enough money")
         else:
             return bet
+        print('Thanks for the money!')
 
 def play_game(money, card_value, cards):
     bet = get_bet(money)
@@ -58,10 +58,10 @@ def play_game(money, card_value, cards):
         print(f"Hand value: {hand_value}")
         
         if hand_value > 21:
-            print("You bust!")
+            print("You lose!")
             return money, hand_value, player_hand
         
-        action = input("Do you want to hit or stand? type h or s: ")
+        action = input("Do you want to hit or stand? type h to hit or s to stand: ")
         if action == 'h':
             player_hand = player_hand + [draw_card()]
             print(f"Your hand: {player_hand}")
@@ -87,7 +87,7 @@ def play_game(money, card_value, cards):
         print("You lose!")
         return money, hand_value, player_hand
     else:
-        print("you lose thanks for your mkney!")
+        print("you lose thanks for your money!")
 # works even for a draw since a draw means loss for the player
         money = money - bet
         return money, hand_value, player_hand
@@ -108,6 +108,7 @@ def main():
             if play_again.lower() != 'y':
                 save = open("save.txt", "a")
                 name = input("Enter your name that can be saved in the text file for the money you made ")
+                print(f"You made £{money - 50}")
                 save.write(f"{name} {money}\n")
                 save.close()
                 playing = False
